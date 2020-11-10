@@ -1,4 +1,4 @@
-package tests.RegRes_API;
+package tests;
 
 import io.restassured.response.ValidatableResponse;
 import models.ListUsers;
@@ -7,14 +7,14 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
-public class GetTests extends TestBase{
+public class GetTests extends TestBase {
 
     @Test
     void listUsersTest() {
         ListUsers listUsers = given()
-                .when()
+            .when()
                 .get("/users?page=2")
-                .then()
+            .then()
                 .log().body()
                 .statusCode(200)
                 .extract().as(ListUsers.class);
@@ -25,9 +25,9 @@ public class GetTests extends TestBase{
     @Test
     void singleUserTest() {
         ValidatableResponse body = given()
-                .when()
+            .when()
                 .get("/users/2")
-                .then()
+            .then()
                 .statusCode(200)
                 .body("data.id", is(2));
     }

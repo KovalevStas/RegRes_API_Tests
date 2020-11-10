@@ -1,15 +1,15 @@
-package tests.RegRes_API;
+package tests;
 
-import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
+import tests.TestBase;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static utils.FileUtils.readStringFromFile;
 
-public class PostTest extends TestBase{
+public class PostTest extends TestBase {
 
 
     @Test
@@ -19,9 +19,9 @@ public class PostTest extends TestBase{
                         "    \"name\": \"morpheus\",\n" +
                         "    \"job\": \"leader\"\n" +
                         "}")
-                .when()
+            .when()
                 .post("/users")
-                .then()
+            .then()
                 .log().body()
                 .statusCode(201)
                 .body("id", is(notNullValue()));
@@ -33,9 +33,9 @@ public class PostTest extends TestBase{
         given().
                 contentType(ContentType.JSON)
                 .body(data)
-                .when()
+            .when()
                 .post("/register")
-                .then()
+            .then()
                 .log().body()
                 .statusCode(200)
                 .body("id", is(notNullValue()));

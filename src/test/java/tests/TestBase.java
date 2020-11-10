@@ -1,4 +1,4 @@
-package tests.RegRes_API;
+package tests;
 
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 public class TestBase {
     @BeforeEach
-    public void stert(){
+    public void stert() {
         RestAssured.filters(new AllureRestAssured());
         RestAssured.baseURI = "https://reqres.in/api";
     }
